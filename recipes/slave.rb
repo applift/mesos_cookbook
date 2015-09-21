@@ -39,6 +39,9 @@ node['mesos']['slave']['flags'].keys.each do |config_key|
   end
 end
 
+node.override['mesos']['slave']['flags']['hostname'] = node['opsworks']['instance']['public_dns_name']
+node.override['mesos']['slave']['flags']['ip'] = node['opsworks']['instance']['private_ip']
+
 if node['mesos']['zookeeper_exhibitor_discovery'] && node['mesos']['zookeeper_exhibitor_url']
   zk_nodes = MesosHelper.discover_zookeepers_with_retry(node['mesos']['zookeeper_exhibitor_url'])
   node.override['mesos']['slave']['flags']['master'] = 'zk://' + zk_nodes['servers'].map { |s| "#{s}:#{zk_nodes['port']}" }.join(',') + '/' +  node['mesos']['zookeeper_path']

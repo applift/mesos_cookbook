@@ -39,6 +39,8 @@ when 'rhel', 'redhat', 'centos', 'amazon', 'scientific'
         source 'http://repos.mesosphere.io/el/7/noarch/RPMS/mesosphere-el-repo-7-1.noarch.rpm'
       when '6'
         source 'http://repos.mesosphere.io/el/6/noarch/RPMS/mesosphere-el-repo-6-2.noarch.rpm'
+      else
+        source 'http://repos.mesosphere.io/el/6/noarch/RPMS/mesosphere-el-repo-6-2.noarch.rpm'
       end
       path "#{Chef::Config[:file_cache_path]}/mesosphere-el-repo.noarch.rpm"
       action :create
