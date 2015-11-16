@@ -1,0 +1,10 @@
+/var/log/mesos/*.log
+{
+  rotate 1
+  daily
+  missingok
+  notifempty
+  postrotate
+    kill -HUP $(cat /var/run/syslogd.pid)
+  endscript
+}
