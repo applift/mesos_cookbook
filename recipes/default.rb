@@ -19,3 +19,4 @@
 
 # install mesos package
 include_recipe 'mesos::install'
+include_recipe 'mesos::logging'

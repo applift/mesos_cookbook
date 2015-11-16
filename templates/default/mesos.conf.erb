@@ -1,0 +1,3 @@
+<%= %w{mesos-master mesos-slave chronos marathon}.map do |programname|
+  "if $programname == '#{programname}' then /var/log/mesos/#{programname}.log"
+end.join("\n") %>
